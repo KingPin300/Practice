@@ -44,4 +44,4 @@ while True: # calling attack on the enemy until he/she's dead.
 	enemy1.attack()
 	if enemy1.checkLife() == 0:
 		break
-enemy1.heal()
+enemy1.heal() # the enemy heals him/her self.
