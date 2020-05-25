@@ -6,14 +6,15 @@ root.title("Simple Calculator")
 e = Entry(root, width=35, borderwidth=5)
 e.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
 
-
 def bNumber(num):
 	current = e.get()
 	e.delete(0, END)
 	e.insert(0, str(current) + str(num))
+
 def bClear():
 	e.delete(0, END)
 	firstNum = 0
+
 def bAdd():
 	holder = e.get()
 	if (holder == ""):
@@ -24,6 +25,7 @@ def bAdd():
 	math = "+"
 	value = firstNum
 	e.delete(0,END)
+
 def bEqual():
 	holder = e.get()
 	if (holder == ""):
@@ -41,6 +43,7 @@ def bEqual():
 			print("CAN'T DIVIDE BY 0!!")
 			return
 		e.insert(0, str(value / nextNumber))
+
 def bSub():
 	holder = e.get()
 	if (holder == ""):
@@ -51,6 +54,7 @@ def bSub():
 	math = "-"
 	value = firstNum
 	e.delete(0,END)
+
 def bDiv():
 	holder = e.get()
 	if (holder == ""):
@@ -61,6 +65,7 @@ def bDiv():
 	math = "/"
 	value = firstNum
 	e.delete(0,END)
+
 def bMul():
 	holder = e.get()
 	if (holder == ""):
@@ -91,6 +96,7 @@ buttonClear = Button(root, text="Clear", padx=30,pady=20, command=lambda: bClear
 buttonSub = Button(root, text="-", padx=40,pady=20, command=lambda: bSub())
 buttonMul = Button(root, text="*", padx=40,pady=20, command=lambda: bMul())
 buttonDiv = Button(root, text="/", padx=40,pady=20, command=lambda: bDiv())
+
 # put buttons on the screen.
 button1.grid(row=3,column=0)
 button2.grid(row=3,column=1)
