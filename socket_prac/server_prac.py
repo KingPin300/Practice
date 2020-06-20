@@ -4,12 +4,14 @@ import threading
 
 PORT = 5050
 SERVER = "192.168.1.39" # my mothership ip
-SERVER = socket.gethostbyname(socket.gethostname())
-ADDR = (SERVER, PORT)
 DISCONNECT_MESSAGE = "EXIT"
 HEADER = 64
 FORMAT = 'utf-8'
 
+
+SERVER = socket.gethostbyname(socket.gethostname())
+ADDR = (SERVER, PORT)
+clients = []
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
 
@@ -33,8 +35,9 @@ def start():
 	server.listen()
 	while True:
 		connection, addr = server.accept()
-		thread = threading.Thread(target=handleClient, args=(connection, addr))
-		thread.start()
+		myThread = threading.Thread(target=handleClient, args=(connection, addr))
+		myThread.start()
+		clients.append(myThread)
 		print(f"[SERVER] active thread count {threading.activeCount() - 1 }.")
 
 

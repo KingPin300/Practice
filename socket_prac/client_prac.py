@@ -21,4 +21,9 @@ def send(msg):
 	client.send(message)
 
 send("Hello World!")
+msg_length = client.recv(HEADER).decode(FORMAT)
+if msg_length:
+	msg_length = int(msg_length)
+	msg = client.recv(msg_length).decode(FORMAT)
+	print(f"[SERVER] {msg}")
 send(DISCONNECT_MESSAGE)
